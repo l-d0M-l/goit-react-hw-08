@@ -1,8 +1,15 @@
 import css from "./Contact.module.css";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoPersonCircle } from "react-icons/io5";
-function Contact({ person, onDelete }) {
-  //   console.log(person);
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../redux/contactsSlice";
+function Contact({ person }) {
+  const dispatch = useDispatch();
+  function handleDelete(e) {
+    e.preventDefault();
+    dispatch(deleteContact(person.id));
+  }
+  //тут будет напрямую удаление контакта
   return (
     <li className={css.card}>
       <ul className={css.namesList}>
@@ -15,7 +22,7 @@ function Contact({ person, onDelete }) {
           {person.number}
         </li>
       </ul>
-      <button onClick={() => onDelete(person.id)}>Delete</button>
+      <button onClick={handleDelete}>Delete</button>
     </li>
   );
 }
