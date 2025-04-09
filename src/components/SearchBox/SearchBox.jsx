@@ -1,15 +1,17 @@
 import css from "./SearchBox.module.css";
-import { Field, Formik, Form } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 
 import { changeFilter } from "../../redux/filtersSlice";
+
+import { selectNameFilter } from "../../redux/filtersSlice";
 function SearchBox() {
   const dispatch = useDispatch();
 
   function onSearchContacts(searchValue) {
     dispatch(changeFilter(searchValue));
   }
-  const filterValue = useSelector((state) => state.filter.name);
+
+  const filterValue = useSelector(selectNameFilter);
 
   return (
     <label className={css.label}>

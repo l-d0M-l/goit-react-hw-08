@@ -1,49 +1,37 @@
-import { useState, useEffect } from "react";
-import { nanoid } from "nanoid";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import "./App.css";
 import ContactForm from "../ContactForm/ContactForm";
-
 import ContactList from "../ContactList/ContactList";
-
 import SearchBox from "../SearchBox/SearchBox";
+
+import { fetchContacts } from "../../redux/contactsOps";
+
+import {
+  selectContacts,
+  selectLoading,
+  selectError,
+} from "../../redux/contactsSlice";
+
 function App() {
-  // const [contacts, setContacts] = useState(() => {
-  //   //check if contacts are in localStorage
-  //   const savedContants = localStorage.getItem("contacts");
-  //   if (savedContants) {
-  //     return JSON.parse(savedContants);
-  //   }
-  //   //if nothing in local storage, then initiate as standart
-  //   return [
-  //     { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
-  //     { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
-  //     { id: "id-3", name: "Eden Clements", number: "645-17-79" },
-  //     { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
-  //   ];
-  // });
-  
-  // useEffect(() => {
-  //   localStorage.setItem("contacts", JSON.stringify(contacts));
-  // }, [contacts]);
-  
-  // const [filter, setFilter] = useState("");
-  // function addPerson(newPerson) {
-  //   setContacts((previousPeople) => {
-  //     return [...previousPeople, { ...newPerson, id: nanoid() }];
-  //   });
-  // }
-  // function deletePerson(personId) {
-  //   setContacts((previousPeople) => {
-  //     return previousPeople.filter((person) => person.id !== personId);
-  //   });
-  // }
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   return (
     <>
       <h1>Phonebook</h1>
       <ContactForm></ContactForm>
       <SearchBox />
-
-      <ContactList></ContactList>
+      {loading && <b>Please wait..</b>}
+      {error && <b>An error occured, please reload</b>}
+      {contacts.length > 0 && !error && <ContactList />}
     </>
   );
 }

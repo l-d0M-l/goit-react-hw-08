@@ -2,14 +2,15 @@ import css from "./Contact.module.css";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoPersonCircle } from "react-icons/io5";
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contactsSlice";
+
+import { deleteContact } from "../../redux/contactsOps";
 function Contact({ person }) {
   const dispatch = useDispatch();
   function handleDelete(e) {
     e.preventDefault();
     dispatch(deleteContact(person.id));
   }
-  //тут будет напрямую удаление контакта
+
   return (
     <li className={css.card}>
       <ul className={css.namesList}>
