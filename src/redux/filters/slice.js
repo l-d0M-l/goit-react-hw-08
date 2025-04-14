@@ -10,7 +10,7 @@ const slice = createSlice({
       state.name = action.payload;
     },
   },
-});
+}); 
 
 export default slice.reducer;
 

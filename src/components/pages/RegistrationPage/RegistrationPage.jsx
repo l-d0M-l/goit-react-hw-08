@@ -1,6 +1,6 @@
 import { RegistartionForm } from "./RegistartionForm/RegistartionForm";
-import css from "./RegisterPage.module.css";
+import css from "./RegistrationPage.module.css";
 
-export const RegisterPage = () => {
+export const RegistrationPage = () => {
   return <RegistartionForm />;
 };

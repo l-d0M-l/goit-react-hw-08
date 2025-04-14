@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ref } from "yup";
 import { login, logout, refreshUser, register } from "./operations";
 
 const slice = createSlice({
