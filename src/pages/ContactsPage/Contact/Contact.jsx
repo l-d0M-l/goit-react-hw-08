@@ -3,7 +3,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoPersonCircle } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 
-import { deleteContact } from "../../../../redux/contacts/operations";
+import { deleteContact } from "../../../redux/contacts/operations";
 function Contact({ person }) {
   const dispatch = useDispatch();
   function handleDelete(e) {

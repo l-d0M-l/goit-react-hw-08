@@ -5,13 +5,13 @@ import {
   selectContacts,
   selectError,
   selectLoading,
-} from "../../../redux/contacts/selectors";
+} from "../../redux/contacts/selectors";
 import Contact from "./Contact/Contact";
 import ContactForm from "./ContactForm/ContactForm";
 import { useEffect } from "react";
-import { fetchContacts } from "../../../redux/contacts/operations";
+import { fetchContacts } from "../../redux/contacts/operations";
 import SearchBox from "./SearchBox/SearchBox";
-import { selectNameFilter } from "../../../redux/filters/selectors";
+import { selectNameFilter } from "../../redux/filters/selectors";
 
 export const ContactsPage = () => {
   const dispatch = useDispatch();

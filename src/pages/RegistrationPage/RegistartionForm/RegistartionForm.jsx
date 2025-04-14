@@ -2,7 +2,7 @@ import css from "./RegistartionForm.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { register } from "../../../../redux/auth/operations";
+import { register } from "../../../redux/auth/operations";
 export const RegistartionForm = () => {
   const dispatch = useDispatch();
 
